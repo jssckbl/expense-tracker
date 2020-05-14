@@ -41,7 +41,21 @@ function updateValues() {
 
   const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
-  console.log(total);
+  const income = amounts
+    .filter(item => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+
+  const expense = (
+    amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
+    -1
+  ).toFixed(2);
+
+  balance.innerText = `$${total}`;
+  money_plus.innerText = `$${income}`;
+  money_minus.innerText = `$${expense}`;
+
+  console.log(expense);
 }
 
 // Init app
