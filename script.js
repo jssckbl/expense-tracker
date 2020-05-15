@@ -15,6 +15,27 @@ const dummyTransactions = [
 
 let transactions = dummyTransactions;
 
+// Add transaction
+function addTransaction(e) {
+  e.preventDefault();
+
+  if (text.value.trim() === "" || amount.value.trim() === "") {
+    alert("please enter a description and amount");
+  } else {
+    const transaction = {
+      id: generateID(),
+      text: text.value,
+      amount: amount.value
+    };
+    console.log(transaction);
+  }
+}
+
+// Generate random ID
+function generateID() {
+  return Math.floor(Math.random() * 100000000);
+}
+
 // Add transactions to DOM list
 
 function addTransactionDOM(transaction) {
@@ -66,3 +87,6 @@ function init() {
 }
 
 init();
+
+// Event listeners
+form.addEventListener("submit", addTransaction);
